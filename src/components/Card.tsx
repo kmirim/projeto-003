@@ -3,6 +3,8 @@ import Grid from '@mui/material/Grid';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
+import { formBoxStyle } from '../style/ItemStyles';
+// import '../style/card.css';
 
 const Img = styled('img')({
     margin: 'auto',
@@ -16,19 +18,17 @@ interface CardItemProps{
     title: string;
     description: string,
     id: string;
-    price: string;
-    // onRemove?: () => void;
 }
 
-export const CardItem:React.FC<CardItemProps> = ({imageSrc,title, description, id, price}) => {
-  return (    
-  <Grid container spacing={2} columns={12} bgcolor='#f1f1f1' padding={4} border="1px solid grey" borderRadius={2}>
+export const CardItem:React.FC<CardItemProps> = ({imageSrc,title, description, id}) => {
+  return ( 
+  <Grid container bgcolor='#f1f1f1' padding={2} justifyContent='center' alignItems='center' borderRadius={2}sx={formBoxStyle}>
     <Grid item> 
       <ButtonBase sx={{ width: 128, height: 128 }}>
         <Img alt={title} src={imageSrc} />
       </ButtonBase>
     </Grid>
-    <Grid item xs={12} sm container>
+    <Grid item xs={12} sm={6} container>
       <Grid item xs container direction="column" spacing={2}>
         <Grid item xs>
           <Typography gutterBottom variant="subtitle1" component="div">
@@ -49,11 +49,6 @@ export const CardItem:React.FC<CardItemProps> = ({imageSrc,title, description, i
             Remove
           </Typography>
         </Grid>
-      </Grid>
-      <Grid item>
-        <Typography variant="subtitle1" component="div">
-          {price}
-        </Typography>
       </Grid>
     </Grid>
   </Grid>
