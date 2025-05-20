@@ -29,10 +29,22 @@ export function useCadastroForm(){
     });
 
     const[loadingCep, setLoadingCep] = useState(false);
-    // typescript deve ter o parametro tipado, como é o caso do buscar endereço por cep (no arquivo cepService) e handleChange 
+    const[cepError, setCepError] = useState('');
 
+    // typescript deve ter o parametro tipado, como é o caso do buscar endereço por cep (no arquivo cepService) e handleChange 
     const handleChange = async (e:React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
+
+        if(name === 'cep')
+        {
+          if(!/^\d*$/.test(value)){
+            setCepError("Digite somente números!");
+            return;
+          }
+          else{
+            setCepError('');
+          }
+        }
 
         setFormData(prev => ({ ...prev, [name]: value }));
     

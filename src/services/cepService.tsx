@@ -4,13 +4,13 @@
 import axios from 'axios';
 
 export async function buscarEnderecoPorCep(cep: string) {
+
   // Limpa o CEP só com números
   cep = cep.replace(/\D/g, '');
 
   if (cep.length !== 8) {
     throw new Error('CEP inválido');
   }
-
   const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
 
   if (response.data.erro) {
