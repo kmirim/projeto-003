@@ -4,7 +4,7 @@ import { useCadastroForm } from '../hooks/useCadastroForm';
 import { containerBoxStyle, formBoxStyle } from '../style/ItemStyles';
 
 export default function FormularioDeCadastro() {
-  const { formData, handleChange, handleSubmit, loadingCep } = useCadastroForm();
+  const { formData, handleChange, handleSubmit, loadingCep,cepError } = useCadastroForm();
   const theme = useTheme();
 
   return (
@@ -57,7 +57,8 @@ export default function FormularioDeCadastro() {
           <Grid item xs={12} sm={6}>
             <TextField
               fullWidth
-              helperText="Ex: 20020080"
+              helperText={cepError || "Incluir somente números"}
+              error={Boolean(cepError)}
               id="campo-cep"
               label="CEP"
               name="cep"

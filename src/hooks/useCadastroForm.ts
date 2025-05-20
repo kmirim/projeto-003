@@ -85,5 +85,6 @@ export function useCadastroForm(){
         handleChange,
         handleSubmit,
         loadingCep,
+        cepError,
     };
 }
