@@ -11,13 +11,14 @@ export default function FormularioDeCadastro() {
     <Box sx={containerBoxStyle}>
       <Box component='form' onSubmit={handleSubmit} sx={formBoxStyle}>
         <Grid container spacing={2}>
+          
           {/* Nome */}
           <Grid item xs={12} sm={6}>
             <TextField
               fullWidth
-              helperText="Informar o primeiro nome"
+              helperText="Nome completo"
               id="campo-nome"
-              label="Nome"
+              label="Nome Completo"
               name="nome"
               value={formData.nome}
               onChange={handleChange}
@@ -25,17 +26,16 @@ export default function FormularioDeCadastro() {
             />
           </Grid>
 
-          {/* Sobrenome */}
+          {/*Nome social */}
           <Grid item xs={12} sm={6}>
             <TextField
               fullWidth
-              helperText="Informar o sobrenome"
-              id="campo-sobrenome"
-              label="Sobrenome"
-              name="sobrenome"
+              helperText="Como gostaria de chamado"
+              id="campo-nomesocial"
+              label="Nome social"
+              name="nome-social"
               value={formData.sobrenome}
               onChange={handleChange}
-              required
             />
           </Grid>
 
