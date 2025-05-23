@@ -33,8 +33,8 @@ export default function FormularioDeCadastro() {
               helperText="Como gostaria de chamado"
               id="campo-nomesocial"
               label="Nome social"
-              name="nome-social"
-              value={formData.sobrenome}
+              name="nomesocial"
+              value={formData.nomesocial}
               onChange={handleChange}
             />
           </Grid>
@@ -49,7 +49,7 @@ export default function FormularioDeCadastro() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required
+              // required
             />
           </Grid>
 
@@ -65,7 +65,7 @@ export default function FormularioDeCadastro() {
               value={formData.cep}
               onChange={handleChange}
               disabled={loadingCep}
-              required
+              // required
             />
           </Grid>
 
@@ -92,7 +92,7 @@ export default function FormularioDeCadastro() {
               name="numero"
               value={formData.numero}
               onChange={handleChange}
-              required
+              // required
             />
           </Grid>
 

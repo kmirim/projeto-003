@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { buscarEnderecoPorCep } from '../services/cepService';
+import axios from 'axios';
+import { error } from 'console';
 
 //Descrever a forma (ou estrutura) de um objeto;
 //Especifica quais propriedades um objeto deve ter e quais os tipos;
 
 export interface FormData{
     nome: string;
-    sobrenome: string;
+    nomesocial: string;
     email: string;
     cep: string;
     rua: string;
@@ -33,7 +35,7 @@ export interface FormData{
 export function useCadastroForm(){
     const [formData, setFormData] = useState<FormData>({
         nome: '',
-        sobrenome: '',
+        nomesocial: '',
         email: '',
         cep: '',
         rua: '',
@@ -119,15 +121,21 @@ export function useCadastroForm(){
         }
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log("enviado", formData);
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      try{
+        const response = await axios.post('http://localhost:8081/pessoas', formData);
+        console.log("dados enviados com sucesso: ", response.data);
+      }
+      catch(error){
+        console.error('Erro ao enviar dados: ', error);
+      }
     };
     return{
-        formData,
-        handleChange,
-        handleSubmit,
-        loadingCep,
-        cepError,
-    };
+      formData,
+      handleChange,
+      handleSubmit,
+      loadingCep,
+      cepError,
+  };
 }
